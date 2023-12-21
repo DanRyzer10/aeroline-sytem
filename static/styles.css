@@ -1,0 +1,41 @@
+@import "./normalize.css";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,600;0,700;1,800&family=Roboto:wght@300&display=swap');
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+.navbar {
+    background-color: #10004F;
+    margin: 0;
+    padding: 0;
+}
+.navbar p {
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    margin: 0;
+    padding: 30px;
+}
+.btn-l {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 30px;
+}
+.div-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.money{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+}
+.money p{
+    margin: 0;
+}

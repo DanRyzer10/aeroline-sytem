@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="main.css">
+{% macro navbar(text) %}
+<nav class="navbar">
+    <div class="div-nav">
+        <p>{{text}}</p>
+        <div class="money">
+            <img class="img-acuador" style="width: 30px;" src=" {{url_for('static', filename='images/ecuador.svg') }}" alt="ecualogo">
+            <p>USD-$</p>
+        </div>
+        {%from "button.html" import btn%}
+        {{btn('iniciar sesion', '#403372')}}
+
+        
+    </div>
+   
+
+</nav>
+{%endmacro%}
