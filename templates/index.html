@@ -9,5 +9,16 @@
 <body>
     {%from "navbar.html" import navbar%}
     {{navbar('Aerolinea')}}
+
+    <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh" >
+        <section style="background-color: #696969;align-items:center">
+            {%from "drow.html" import drow%}
+            {%set pasajero={'crear':'#','consultar':'#','modificar':'#','eliminar':'#'}%}
+            {{drow('pasajero', pasajero)}}
+          
+        </section>
+        <section style="background-color: #FFFFFF;"> pepe</section>
+
+    </main>
 </body>
 </html>
