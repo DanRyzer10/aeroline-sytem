@@ -32,6 +32,25 @@ def update_passengers():
 def delete_passengers():
      return render_template('views/passenger/delete.html')
 
+
+#routes for the flight
+
+@app.route('/flight/create')
+def create_flights():
+    return render_template('views/flight/create.html')
+
+@app.route('/flight/list')
+def read_flights():
+    return render_template('views/flight/read.html')
+
+@app.route('/flight/update')
+def update_flights():
+    return render_template('views/flight/update.html')
+
+@app.route('/flight/delete')
+def delete_flights():
+    return render_template('views/flight/delete.html')
+
 #-----------------------------------------------
 #post passenger
 @app.route('/passenger', methods=['POST'])

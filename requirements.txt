@@ -2,3 +2,5 @@ flask
 sqlalchemy
 sqlalchemy.orm
 python-dotenv
+
+oracledb
