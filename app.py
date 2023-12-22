@@ -1,7 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from routes.passenger import passenger
+from utils.db import db
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'oracle+oracledb://system:oracle123@localhost:1521/xe'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+# SQLAlchemy(app)
+
 app.secret_key = 'clave_secreta'
 @app.route('/')
 def index():
@@ -58,5 +67,6 @@ def store_passenger():
     flash('El pasajero se ha creado correctamente','success')
     return redirect(url_for('index'))
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     db
+#     app.run(debug=True)
