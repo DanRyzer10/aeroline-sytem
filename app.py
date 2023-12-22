@@ -10,6 +10,9 @@ def index():
 def about():
     return render_template('about.html')
 
+
+# Routes for the passenger
+
 @app.route('/passenger/create')
 def create_passengers():
     return render_template('views/passenger/create.html')
@@ -25,6 +28,12 @@ def update_passengers():
 @app.route('/passenger/delete')
 def delete_passengers():
     return render_template('views/passenger/delete.html')
+
+#-----------------------------------------------
+#post passenger
+@app.route('/passenger', methods=['POST'])
+def store_passenger():
+    return "ok"
 
 if __name__ == '__main__':
     app.run(debug=True)

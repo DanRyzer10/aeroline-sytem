@@ -7,15 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    {%from "navbar.html" import navbar%}
+    {%from "components/navbar.html" import navbar%}
     {{navbar('Aerolinea')}}
     <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh" >
         <section style="background-color: #696969;align-items:center">
-            {%from "drow.html" import drow%}
+            {%from "components/drow.html" import drow%}
             {%set pasajero={'crear':"create_passengers",'consultar':'read_passengers','modificar':'update_passengers','eliminar':'delete_passengers'}%}
             {{drow('pasajero', pasajero)}}
         </section>
-        <section style="background-color: #FFFFFF;"> pepe</section>
+        <section style="background-color: #FFFFFF; align-items:center">
+            {%from "components/form.html" import forml%}
+            {%set input_names=['nombre','apellido','edad','telefono','email','direccion']%}
+            {{forml('pasajero',input_names)}}
+        </section>
 
     </main>
 </body>
