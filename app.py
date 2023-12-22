@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-
+from routes.passenger import passenger
 
 app = Flask(__name__)
 app.secret_key = 'clave_secreta'
@@ -11,6 +11,8 @@ def index():
 def about():
     return render_template('about.html')
 
+#app.register_blueprint(passenger)
+
 
 # Routes for the passenger
 
@@ -20,7 +22,7 @@ def create_passengers():
 
 @app.route('/passenger/list')
 def read_passengers():
-    return render_template('views/passenger/read.html')
+     return render_template('views/passenger/read.html')
 
 @app.route('/passenger/update')
 def update_passengers():
@@ -28,7 +30,7 @@ def update_passengers():
 
 @app.route('/passenger/delete')
 def delete_passengers():
-    return render_template('views/passenger/delete.html')
+     return render_template('views/passenger/delete.html')
 
 #-----------------------------------------------
 #post passenger
