@@ -11,6 +11,20 @@
     {{navbar('Aerolinea')}}
     <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh" >
         <section style="background-color: #696969;align-items:center">
+            {% with messages = get_flashed_messages() %}
+                {%from "components/flash.html" import flash%}
+                {% if messages %}
+                    <div class="flashed-area">
+                        
+                        {{ flash(messages[0], 'success' ) }}
+                    </div>
+                    <!-- <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul> -->
+                {% endif %}
+            {% endwith %}
             {%from "components/drow.html" import drow%}
             {%set pasajero={'crear':"create_passengers",'consultar':'read_passengers','modificar':'update_passengers','eliminar':'delete_passengers'}%}
             {{drow('pasajero', pasajero)}}

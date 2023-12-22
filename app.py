@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 
 
 app = Flask(__name__)
+app.secret_key = 'clave_secreta'
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -33,7 +34,8 @@ def delete_passengers():
 #post passenger
 @app.route('/passenger', methods=['POST'])
 def store_passenger():
-    return "ok"
+    flash('El pasajero se ha creado correctamente','success')
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

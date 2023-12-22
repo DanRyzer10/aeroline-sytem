@@ -1,0 +1,39 @@
+{%macro flash(text, type)%}
+<div class="flash {{type}}">
+    <p>{{text}}</p>
+</div>
+
+<style>
+    .flash {
+       width: 80%;
+       height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .5);
+        z-index: 1000;
+    }
+
+    .flash p {
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    .flash.success {
+        background: #41b883;
+    }
+
+    .flash.error {
+        background: #e55353;
+    }
+</style>
+
+{%endmacro%}
