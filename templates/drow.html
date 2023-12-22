@@ -7,7 +7,7 @@
     </div>
     <div id="dropdown-content" style="display: none">
     {%for key, value in dict.items() %}
-    <a href="{{value}}">{{key}}</a>
+    <a href="{{url_for(value)}}">{{key}}</a>
     {%endfor%}
     </div>
 
