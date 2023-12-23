@@ -8,7 +8,7 @@
 </head>
 <body>
     {%from "components/navbar.html" import navbar%}
-    {{navbar('Aerolinea')}}
+    {{navbar('Aerolinea')}} 
     <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh" >
         <section style="background-color: #696969;align-items:center">
             {% with messages = get_flashed_messages() %}
@@ -17,21 +17,21 @@
                     <div class="flashed-area">
                         {{ flash(messages[0], 'success' ) }}
                     </div>
-                    <!-- <ul>
+                    <ul>
                         {% for message in messages %}
                             <li>{{ message }}</li>
                         {% endfor %}
-                    </ul> -->
+                    </ul> 
                 {% endif %}
-            {% endwith %}
+            {% endwith %}  
             {%from "components/drow.html" import drow%}
-            {%set pasajero={'crear':"create_passengers",'consultar':'read_passengers','modificar':'update_passengers','eliminar':'delete_passengers'}%}
+            {%set pasajero={'crear':"passenger.create_passengers",'consultar':'passenger.read_passengers','modificar':'passenger.update_passengers','eliminar':'passenger.delete_passengers'}%}
             {{drow('pasajero', pasajero)}}
         </section>
         <section style="background-color: #FFFFFF; align-items:center">
             {%from "components/form.html" import forml%}
             {%set input_names=['nombre','apellido','edad','telefono','email','direccion']%}
-            {{forml('pasajero',input_names)}}
+            {{forml('pasajero',input_names,'passenger.store_passenger')}}
         </section>
 
     </main>

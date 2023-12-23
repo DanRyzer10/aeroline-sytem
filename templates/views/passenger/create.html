@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    create
+
+    {%from "/components/form.html" import forml %}
+    {%set input_names=['name','lastname','age','phone','email','address']%}
+    {{forml('pasajero',input_names,'passenger.store_passenger')}}
 </body>
 </html>

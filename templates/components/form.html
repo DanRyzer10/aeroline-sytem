@@ -1,7 +1,7 @@
-{%macro forml(title,input_names)%}
+{%macro forml(title,input_names, route)%}
 <section class="frm">
     <h1>{{title}}</h1>
-    <form action="{{url_for('store_passenger')}}" method="post"> 
+    <form action="{{url_for(route)}}" method="post"> 
         <div class="container-form">
             <div class="container-input">
                 {%for name in input_names%}

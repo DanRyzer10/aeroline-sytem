@@ -4,8 +4,8 @@
     <div class="div-nav">
         <p>{{text}}</p>
        <div class="options">
-        <a href="{{url_for('create_flights')}}">vuelos</a>
-        <a href="{{url_for('create_passengers')}}">pasajeros</a>
+        <a href="{{url_for('flight.create_flights')}}">vuelos</a>
+        <a href="{{url_for('passenger.create_passengers')}}">pasajeros</a>
        </div>
         <div class="money">
             <img class="img-acuador" style="width: 30px;" src=" {{url_for('static', filename='images/ecuador.svg') }}" alt="ecualogo">
