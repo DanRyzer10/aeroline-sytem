@@ -2,5 +2,6 @@ flask
 sqlalchemy
 sqlalchemy.orm
 python-dotenv
-
+flask-login
 oracledb
+wtforms

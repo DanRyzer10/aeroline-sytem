@@ -3,9 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
     <title>Document</title>
 </head>
 <body>
-    read
+    {%from "components/navbar.html" import navbar %}
+    {{navbar('Aerolinea')}}
+    <main class="passenger-view">
+        <section class="passenger-info passenger-main">
+            <div class="avatar">
+                <img src="{{url_for('static',filename='images/user.svg')}}" alt="user-logo">
+            </div>
+            <p>{{passenger.name}}</p>
+            <p>{{passenger.lastname}}</p>
+        </section>
+        <section class="passenger-info passenger-data">
+            {%from "components/data.html" import data%}
+            {{data('images/email.svg',passenger.email)}}
+            {{data('images/phone.svg',passenger.phone)}}
+            {{data('images/address.svg',passenger.address)}}
+            
+        </section>
+
+        <section class="passenger-info">
+
+        </section>
+    </main>
+    
+
 </body>
+<style>
+    .passenger-view{
+        display: grid;
+        grid-template-columns: 40% 30% 30%;
+        height: 83vh
+    }
+    .passenger-info{
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        width: 80%;
+        background-color: #FFFFFF;
+        align-items: center;
+        border-radius: 10px;
+    }
+    .avatar{
+        width: auto;
+        border-radius: 50%;
+        background-color: #696969;
+        display: flex;
+        margin: 30px;
+        justify-content: center;
+        align-items: center;
+    }
+    .avatar img{
+        width: 100px;
+    }
+    .passenger-info p{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 20px;
+        text-align: center;
+        color: #696969;
+    }
+</style>
 </html>

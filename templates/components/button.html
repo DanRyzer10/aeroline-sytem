@@ -1,5 +1,23 @@
 {%macro btn(text,color)%}
-<button class="btn-l" style="background-color: {{color}};">
-    {{text}}
-</button>
+<a href="{{url_for('auth.login')}}">
+    <button class="btn-l" style="background-color: {{color}};">
+        {{text}}
+    </button>
+</a>
+
+<style scoped>
+    .btn-l{
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 0 10px;
+    }
+    .btn-l:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+</style>
 {%endmacro%}

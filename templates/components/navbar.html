@@ -2,10 +2,10 @@
 {% macro navbar(text) %}
 <nav class="navbar">
     <div class="div-nav">
-        <p>{{text}}</p>
+        <a href="{{url_for('index')}}" class="banner">{{text}}</a>
        <div class="options">
         <a href="{{url_for('flight.create_flights')}}">vuelos</a>
-        <a href="{{url_for('passenger.create_passengers')}}">pasajeros</a>
+        <a href="{{url_for('passenger.all_passengers')}}">pasajeros</a>
        </div>
         <div class="money">
             <img class="img-acuador" style="width: 30px;" src=" {{url_for('static', filename='images/ecuador.svg') }}" alt="ecualogo">
@@ -22,6 +22,23 @@
         align-items: center;
         width: 30%;
         margin: 2px;
+
+    }
+    .banner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 20px 0 20px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+
+    }
+    .banner:hover{
+        cursor: pointer;
+        opacity: 0.8;
+        color: #000;
     }
     .options a {
         text-decoration: none;

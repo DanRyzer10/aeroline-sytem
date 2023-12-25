@@ -1,11 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from routes.passenger import passenger
 from routes.flight import flight
+from routes.auth.auth import auth
 from utils.db import db
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from models.user import User
 
 
 app = Flask(__name__)
+loginManager = LoginManager()
+
+loginManager.init_app(app)
+
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'oracle+oracledb://system:oracle123@localhost:1521/xe'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -23,6 +30,11 @@ def about():
 
 app.register_blueprint(passenger)
 app.register_blueprint(flight)
+app.register_blueprint(auth)
+
+@loginManager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 

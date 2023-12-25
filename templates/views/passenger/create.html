@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
     <title>Document</title>
 </head>
 <body>
+    {%from "components/navbar.html" import navbar%}
+    {{navbar('Aerolinea')}} 
+    <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh" >
+        <section style="background-color: #696969;align-items:center">
+            {% with messages = get_flashed_messages() %}
+                {%from "components/flash.html" import flash%}
+                {% if messages %}
+                    <div class="flashed-area">
+                        {{ flash(messages[0], 'success' ) }}
+                    </div>
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul> 
+                {% endif %}
+            {% endwith %}  
+            {%from "components/drow.html" import drow%}
+            {%set pasajero={'crear':"passenger.create_passengers",'consultar':'passenger.read_passengers','modificar':'passenger.update_passengers','eliminar':'passenger.delete_passengers'}%}
+            {{drow('pasajero', pasajero)}}
+        </section>
+        <section style="background-color: #FFFFFF; align-items:center">
+            {%from "components/form.html" import forml%}
+            {%set input_names=['nombre','apellido','edad','telefono','email','direccion']%}
+            {{forml('pasajero',input_names,'passenger.store_passenger')}}
+        </section>
 
-    {%from "/components/form.html" import forml %}
-    {%set input_names=['name','lastname','age','phone','email','address']%}
-    {{forml('pasajero',input_names,'passenger.store_passenger')}}
+    </main>
 </body>
 </html>

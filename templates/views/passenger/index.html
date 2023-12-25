@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+    <title>passenger</title>
+</head>
+<body>
+    {%from "components/navbar.html" import navbar %}
+    {{navbar('Aerolinea')}}
+    <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh">
+        <section style="background-color: #696969;align-items:center">
+            {%from "components/drow.html" import drow%}
+            {%set pasajero={'crear':"passenger.create_passengers",'modificar':'passenger.update_passengers','eliminar':'passenger.delete_passengers'}%}
+            {{drow('pasajero', pasajero)}}
+        </section>
+    
+        <section class="sect-main" style="background-color: #FFFFFF; align-items:center">
+            {%from "components/element.html" import passenger_element%}
+            {%for passenger in passengers%}
+                {{passenger_element(passenger.name,passenger.lastname,passenger.email,passenger.id)}}
+            {%endfor%}
+        </section>
+        
+
+
+
+    </main>
+</body>
+<style>
+    .sect-main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+</html>

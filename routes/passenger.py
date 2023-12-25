@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from flask import flash, redirect, url_for
 from utils.db import db
+
 from models.passenger import Passenger
 
 
@@ -12,9 +13,18 @@ passenger = Blueprint("passenger", __name__, url_prefix="/passenger")
 def create_passengers():
     return render_template('views/passenger/create.html')
 
-@passenger.route("/list")
-def read_passengers():
-    return render_template('views/passenger/read.html')
+@passenger.route("/all")
+def all_passengers():
+    passengers = Passenger.query.all()
+    return render_template('views/passenger/index.html', passengers=passengers)
+
+@passenger.route("/read/<int:passenger_id>")
+def read_passengers(passenger_id):
+    passenger = Passenger.query.get(passenger_id)
+    if passenger is None:
+        flash('El pasajero no existe','danger')
+        return redirect(url_for('index'))
+    return render_template('views/passenger/read.html', passenger=passenger)
 
 @passenger.route("/update")
 def update_passengers():

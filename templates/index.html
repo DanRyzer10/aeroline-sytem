@@ -8,32 +8,29 @@
 </head>
 <body>
     {%from "components/navbar.html" import navbar%}
-    {{navbar('Aerolinea')}} 
-    <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh" >
-        <section style="background-color: #696969;align-items:center">
-            {% with messages = get_flashed_messages() %}
-                {%from "components/flash.html" import flash%}
-                {% if messages %}
-                    <div class="flashed-area">
-                        {{ flash(messages[0], 'success' ) }}
-                    </div>
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul> 
-                {% endif %}
-            {% endwith %}  
-            {%from "components/drow.html" import drow%}
-            {%set pasajero={'crear':"passenger.create_passengers",'consultar':'passenger.read_passengers','modificar':'passenger.update_passengers','eliminar':'passenger.delete_passengers'}%}
-            {{drow('pasajero', pasajero)}}
-        </section>
-        <section style="background-color: #FFFFFF; align-items:center">
-            {%from "components/form.html" import forml%}
-            {%set input_names=['nombre','apellido','edad','telefono','email','direccion']%}
-            {{forml('pasajero',input_names,'passenger.store_passenger')}}
-        </section>
+    {{navbar('Aerolinea')}}
 
+    <main class="main-content">
+        <section>
+            <img src="{{url_for('static',filename='images/banner.png')}}" alt="banner">
+        </section>
     </main>
+
+    <style>
+        .main-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /*fondo gradiente*/
+        body{
+            background: linear-gradient(rgba(23, 4, 99, 1),rgba(220,214,251,1));
+            background-size: cover;
+            background-position: left;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+    
 </body>
 </html>

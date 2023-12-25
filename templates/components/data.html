@@ -1,0 +1,37 @@
+{%macro data(image,text)%}
+<div class="data">
+    <div class="data-image">
+        <img src="{{url_for('static',filename=image)}}" alt="data-image">
+    </div>
+    <div class="data-text">
+        <p>{{text}}</p>
+    </div>
+    
+</div>
+
+<style>
+    .data{
+        display: flex;
+        align-items: center;
+        width: 80%;
+        height: 40px;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        
+    }
+    .data p{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    .data img{
+        width: 50px;
+    }
+</style>
+
+{%endmacro%}
