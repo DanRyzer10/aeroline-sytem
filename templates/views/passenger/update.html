@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
     <title>Document</title>
 </head>
 <body>
-    update
+    {%from "components/navbar.html" import navbar %}
+    {{navbar('Aerolinea')}}
+
+    <main>
+      <form action="{{url_for('passenger.update_passengers', passenger_id=passenger.id)}}" method="post">
+        
+        <input type="text" name="name" value="{{passenger.name}}" id="name" placeholder="name">
+        <input type="text" name="lastname" value="{{passenger.lastname}}" id="lastname" placeholder="lastname">
+        <input type="text" name="age" value="{{passenger.age}}" id="age" placeholder="age">
+        <input type="text" name="phone" value="{{passenger.phone}}" id="phone" placeholder="phone">
+        <input type="text" name="email" value="{{passenger.email}}" id="email" placeholder="email">
+        <input type="text" name="address" value="{{passenger.address}}" id="address" placeholder="address">
+        <button type="submit">enviar</button>
+        
+      </form>
+    </main>
 </body>
 </html>

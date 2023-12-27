@@ -7,16 +7,28 @@
     <title>passenger</title>
 </head>
 <body>
+   
     {%from "components/navbar.html" import navbar %}
     {{navbar('Aerolinea')}}
     <main style="display: grid; grid-template-columns: 20% 80%; height: 83vh">
         <section style="background-color: #696969;align-items:center">
+            {% with messages = get_flashed_messages() %}
+                {%from "components/flash.html" import flash%}
+                {% if messages %}
+                    <div class="flashed-area">
+                        {{ flash(messages[0], 'success' ) }}
+                    </div>
+                    
+                {% endif %}
+            {% endwith %}  
+
             {%from "components/drow.html" import drow%}
             {%set pasajero={'crear':"passenger.create_passengers",'modificar':'passenger.update_passengers','eliminar':'passenger.delete_passengers'}%}
             {{drow('pasajero', pasajero)}}
         </section>
     
         <section class="sect-main" style="background-color: #FFFFFF; align-items:center">
+            
             {%from "components/element.html" import passenger_element%}
             {%for passenger in passengers%}
                 {{passenger_element(passenger.name,passenger.lastname,passenger.email,passenger.id)}}
@@ -28,6 +40,8 @@
 
     </main>
 </body>
+<script>
+</script>
 <style>
     .sect-main{
         display: flex;

@@ -1,0 +1,79 @@
+{%macro modal(text,id)%}
+
+<dialog id="modal">
+    <h2>{{text}}</h2>
+    <button id="close">Close</button>
+    <a href="{{url_for('passenger.delete_passengers',passenger_id=id)}}" id="ok">ok</a>
+</dialog>
+
+<script>
+    const closeBtn = document.querySelector('#close');
+    const okBtn = document.querySelector('#ok');
+    const modal = document.querySelector('#modal');
+    closeBtn.addEventListener('click',()=>{
+        modal.style.display = 'none';
+    })
+    okBtn.addEventListener('click',()=>{
+        modal.close();
+    })
+</script>
+
+<style>
+    dialog{
+        width: 50%;
+        height: 30%;
+        background-color: #696969;
+        border-radius: 10px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: .9;
+    }
+    dialog h2{
+        color: #fff;
+        font-size: 2rem;
+    }
+    dialog button{
+        padding: 1rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #fff;
+        color: #000;
+        font-size: 1.5rem;
+        margin: 1rem;
+    }
+    dialog button:hover{
+        cursor: pointer;
+    }
+    dialog button:active{
+        transform: scale(.9);
+    }
+    dialog button:focus{
+        outline: none;
+    }
+    dialog button#close{
+        background-color: #ff0000;
+    }
+    dialog button#ok{
+        background-color: #00ff00;
+    }
+    dialog button#close:hover{
+        background-color: #ff0000;
+    }
+    dialog button#ok:hover{
+        background-color: #00ff00;
+    }
+    dialog button#close:active{
+        transform: scale(.9);
+    }
+    dialog button#ok:active{
+        transform: scale(.9);
+    }
+    dialog button#close:focus{
+        outline: none;
+    }
+    dialog button#ok:focus{
+        outline: none;
+    }
+</style>
+{%endmacro%}

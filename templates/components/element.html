@@ -1,5 +1,8 @@
 {%macro passenger_element(name,lastname,email,id)%}
+
+{%from "components/modal.html" import modal%}
 <div class="passenger">
+    
     <a href="{{url_for('passenger.read_passengers',passenger_id=id)}}">
         <img src="{{url_for('static',filename='images/user.svg')}}" alt="user-logo">
     </a>
@@ -13,7 +16,7 @@
             
             <img class="btn edit" src="{{url_for('static',filename='images/edit.svg')}}" alt="edit logo">
         </a>
-        <a  href="{{url_for('passenger.delete_passengers',passenger_id=id)}}" class="btn-delete">
+        <a  href="{{url_for('passenger.delete_passengers', passenger_id=id)}}" class="btn-delete">
             <img class="btn delete" src="{{url_for('static',filename='images/delete.svg')}}" alt="delete logo">
         </a>
     </div>

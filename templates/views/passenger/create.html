@@ -17,20 +17,16 @@
                     <div class="flashed-area">
                         {{ flash(messages[0], 'success' ) }}
                     </div>
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul> 
+                    
                 {% endif %}
             {% endwith %}  
             {%from "components/drow.html" import drow%}
-            {%set pasajero={'crear':"passenger.create_passengers",'consultar':'passenger.read_passengers','modificar':'passenger.update_passengers','eliminar':'passenger.delete_passengers'}%}
+            {%set pasajero={'crear':"passenger.create_passengers",'modificar':'passenger.update_passengers','eliminar':'passenger.delete_passengers'}%}
             {{drow('pasajero', pasajero)}}
         </section>
         <section style="background-color: #FFFFFF; align-items:center">
             {%from "components/form.html" import forml%}
-            {%set input_names=['nombre','apellido','edad','telefono','email','direccion']%}
+            {%set input_names=['name','lastname','age','phone','email','address']%}
             {{forml('pasajero',input_names,'passenger.store_passenger')}}
         </section>
 
