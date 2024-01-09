@@ -1,13 +1,15 @@
-# aerolinea system
-
-
-## instalacion
-// bloque de codigo
+# instalacion
+## crear entorno virtual
+```bash
+python3 -m venv venv
+# activate venv in windows
+venv\Scripts\activate.bat
+```
+## instalar dependencias
 ```python
 pip install -r requirements.txt
-python3 app.py
+python3 main.py
 ```
-
 ## bd connection
 
 ```python
