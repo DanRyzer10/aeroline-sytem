@@ -4,6 +4,13 @@ from routes.flight import flight
 from utils.db import db
 from flask_login import LoginManager
 from models.user import User
+import dotenv
+import os
+
+dotenv.load_dotenv()
+
+userdb = os.getenv('ORACLE_USER')
+passworddb = os.getenv('ORACLE_PASSWORD')
 
 
 app = Flask(__name__)
@@ -12,7 +19,7 @@ app = Flask(__name__)
 # loginManager.init_app(app)
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'oracle+oracledb://system:oracle123@localhost:1521/xe'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'oracle+oracledb://{userdb}:{passworddb}@localhost:1521/xe'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 # SQLAlchemy(app)
